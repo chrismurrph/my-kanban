@@ -18,11 +18,11 @@
                   card-create-fn card-drag-fns card-edit-fn]}
             (om/get-computed this)]
       (dom/div #js {:className "board"}
-        (dom/h2 #js {:className "board-title"}
-          name " Board "
-          (dom/a #js {:className "board-edit"
-                      :onClick #(edit-fn (om/get-ident this))} "Edit"))
-        (dom/p #js {:className "board-description"} description)
+        ;(dom/h2 #js {:className "board-title"}
+        ;  name " Board "
+        ;  (dom/a #js {:className "board-edit"
+        ;              :onClick #(edit-fn (om/get-ident this))} "Edit"))
+        ;(dom/p #js {:className "board-description"} description)
         (when dragging
           (dom/div #js {:className "delete"
                         :onDragOver (fn [e] (.preventDefault e))

@@ -92,13 +92,7 @@
                         (dom/header #js {:className "header"}
                                     (dom/h1 nil
                                             (dom/a #js {:onClick #(.board-activate this nil)}
-                                                   "Om Next Kanban Demo"))
-                                    (dom/nav nil
-                                             (let [props (-> this om/props (select-keys [:boards]))]
-                                               (boards-menu
-                                                 (om/computed props
-                                                              {:activate-fn #(.board-activate this %)
-                                                               :create-fn #(.board-create this)})))))
+                                                   "Simple Developer Kanban")))
                         (dom/main nil
                                   (let [active-board (get-in (om/props this) [:boards 0])]
                                     (board
