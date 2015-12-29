@@ -13,3 +13,8 @@ notifying browser that file changed:  resources/public/js/compiled/out/goog/deps
 notifying browser that file changed:  resources/public/js/compiled/out/cljs_deps.js
 notifying browser that file changed:  out\my_kanban\core.js
 [32mSuccessfully compiled "resources/public/js/compiled/my_kanban.js" in 0.584 seconds.[0m
+[0mCompiling "resources/public/js/compiled/my_kanban.js" from ["src"]...
+notifying browser that file changed:  resources/public/js/compiled/out/goog/deps.js
+notifying browser that file changed:  resources/public/js/compiled/out/cljs_deps.js
+notifying browser that file changed:  out\my_kanban\core.js
+[32mSuccessfully compiled "resources/public/js/compiled/my_kanban.js" in 0.903 seconds.[0m
