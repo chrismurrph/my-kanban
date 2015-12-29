@@ -12,7 +12,8 @@
    [kanban.components.card :refer [Assignee Card]]
    [kanban.components.card-dialog :refer [CardDialog card-dialog]]
    [kanban.components.lane :refer [Lane]]
-   [kanban.components.about :refer [about]])
+   [kanban.components.about :refer [about]]
+   [kanban.utils :as u])
   (:require-macros
    [devcards.core :as dc :refer [defcard deftest]]))
 
@@ -29,6 +30,10 @@
 ;
 ;(def hello (om/factory HelloWorld))
 
+(defn computed [component some-map]
+  (u/log "COMP: " component "\n")
+  (om/computed component some-map))
+
 (defui App
        static om/IQuery
        (query [this]
@@ -42,6 +47,7 @@
                {:users (om/get-query Assignee)}])
        Object
        (board-activate [this ref]
+                       (u/log "Activating " ref)
                        (om/transact! this `[(boards/activate {:ref ~ref})]))
 
        (board-create [this]
@@ -94,9 +100,9 @@
                                                               {:activate-fn #(.board-activate this %)
                                                                :create-fn #(.board-create this)})))))
                         (dom/main nil
-                                  (if-let [active-board (-> this om/props :boards/active)]
+                                  (let [active-board (get-in (om/props this) [:boards 0])]
                                     (board
-                                      (om/computed active-board
+                                      (computed active-board
                                                    {:dragging (-> this om/props :cards/dragged)
                                                     :edit-fn #(.board-edit this %)
                                                     :card-create-fn #(.card-create this %)
@@ -104,8 +110,7 @@
                                                     :card-drag-fns {:start #(.card-drag-start this %1 %2)
                                                                     :end #(.card-drag-end this %1 %2)
                                                                     :drop #(.card-drag-drop this %)
-                                                                    :delete #(.card-drag-delete this)}}))
-                                    (about))
+                                                                    :delete #(.card-drag-delete this)}})))
                                   (if-let [board (-> this om/props :boards/editing)]
                                     (board-dialog
                                       (om/computed board {:lanes (-> this om/props :lanes)
