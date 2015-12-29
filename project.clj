@@ -16,12 +16,16 @@
                  ]
 
   :plugins [[lein-cljsbuild "1.1.1"]
-            [lein-figwheel "0.5.0-1"]]
+            [lein-figwheel "0.5.0-1"]
+            [lein-less "1.7.5"]]
 
   :clean-targets ^{:protect false} ["resources/public/js/compiled"
                                     "target"]
   
   :source-paths ["src"]
+
+  :less {:source-paths ["less/app.main.less"]
+         :target-path "resources/public/css/my_kanban_style.css"}
 
   :cljsbuild {
               :builds [{:id "devcards"

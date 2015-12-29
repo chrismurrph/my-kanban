@@ -1,0 +1,464 @@
+@black:  #111111;
+@white:  #ffffff;
+@blue:   #00b8d4;
+@purple: #ec407a;
+@orange: #ffab00;
+@green:  #00C853;
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.app {
+  font-family: Roboto, sans-serif;
+  font-weight: 300;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.header {
+  display: table;
+  width: 100%;
+  background: @black;
+  color: @white;
+
+  h1 {
+    display: table-cell;
+    margin: 0;
+    padding: 0.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+
+    a {
+      cursor: pointer;
+    }
+  }
+
+  nav {
+    display: table-cell;
+    text-align: right;
+  }
+}
+
+.header-menu {
+  position: relative;
+  z-index: 1;
+
+  a {
+    display: inline-block;
+    padding: 0.5rem;
+    cursor: pointer;
+  }
+
+  ul {
+    position: absolute;
+    right: 0%;
+    top: 100%;
+    display: none;
+    background: @black;
+    text-align: left;
+    margin: 0;
+    list-style: none;
+    padding: 0;
+
+    a {
+      display: block;
+
+      &:hover {
+        background: lighten(@black, 10%);
+      }
+    }
+  }
+
+  &:hover ul {
+    display: block;
+  }
+}
+
+.header-menu-separator {
+  border-top: thin solid lighten(@black, 10%);
+}
+
+.board {
+  .board-title {
+    position: relative;
+    margin: 0rem;
+    padding: 0.5rem;
+    background: @blue;
+    color: @white;
+    font-size: 1rem;
+    font-weight: 500;
+
+    .board-edit {
+      position: absolute;
+      z-index: 0;
+      box-sizing: border-box;
+      right: 0.25rem;
+      padding: 0.25rem;
+      top: 0.25rem;
+      display: inline-block;
+      font-weight: 300;
+      cursor: pointer;
+      opacity: 0.8;
+
+      &:hover {
+        opacity: 1.0;
+      }
+    }
+  }
+
+  .board-description {
+    margin: 1rem 0.5rem 1rem 0.5rem;
+    color: lighten(@black, 25%);
+  }
+
+  .delete {
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 30%;
+    margin: 0rem 0rem 0rem -15%;
+    box-sizing: border-box;
+    background: @white;
+    text-align: center;
+    font-size: 1.5rem;
+    padding: 1rem;
+    text-transform: uppercase;
+    color: lighten(@black, 70%);
+    border-radius: 0rem 0rem 0.25rem 0.25rem;
+  }
+
+  .lanes {
+    display: table;
+    width: 100%;
+    border-spacing: 0.5rem;
+    table-layout: fixed;
+  }
+}
+
+.lane {
+  display: table-cell;
+  border: thin solid lighten(@black, 80%);
+  height: 100%;
+  width: 100%;
+
+  .lane-title {
+    display: table;
+    margin: 0rem;
+    padding: 0.5rem;
+    box-sizing: border-box;
+    font-size: 1rem;
+    font-weight: 500;
+    background: lighten(@black, 90%);
+    border-bottom: thin solid lighten(@black, 80%);
+    width: 100%;
+    border-spacing: 0rem;
+
+    .text {
+      display: table-cell;
+    }
+
+    .count {
+      display: table-cell;
+      text-align: right;
+      font-weight: 300;
+      padding-left: 2rem;
+    }
+  }
+
+  .add {
+    a {
+      display: block;
+      margin-top: 0.5rem;
+      font-size: 1.5rem;
+      text-align: center;
+      color: lighten(@black, 70%);
+      cursor: pointer;
+
+      &:hover {
+        color: @black;
+      }
+    }
+  }
+
+  .cards {
+    min-height: 10rem;
+    padding: 0.5rem;
+  }
+}
+
+.card {
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  border: thin solid lighten(@black, 80%);
+  background: lighten(@black, 90%);
+  border-radius: 0.25rem;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  overflow: hidden;
+
+  &:hover {
+    border: thin solid lighten(@black, 75%);
+    background: lighten(@black, 89%);
+  }
+
+  .card-id {
+    margin-right: 0.25rem;
+  }
+}
+
+.card-id {
+  background: @purple;
+  color: @white;
+  border-radius: 0.5rem;
+  padding: 0rem 0.25rem;
+  height: 1rem;
+  font-size: 1rem;
+}
+
+.board-name {
+  background: @blue;
+  color: @white;
+  border-radius: 0.5rem;
+  padding: 0rem 0.25rem;
+  height: 1rem;
+  font-size: 1rem;
+}
+
+.lane-name {
+  background: @purple;
+  color: @white;
+  border-radius: 0.5rem;
+  padding: 0rem 0.25rem;
+  height: 1rem;
+  font-size: 1rem;
+}
+
+.assignee {
+  color: @green;
+
+  &.selected {
+    border-radius: 0.25rem;
+    padding: 0.25rem;
+    background: @green;
+    color: @white;
+  }
+}
+
+.dialog {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 4rem;
+  box-sizing: border-box;
+
+  .dialog-closer {
+    z-index: 0;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+  }
+
+  .dialog-header {
+  }
+
+  .dialog-title {
+    font-size: 1rem;
+    font-weight: 500;
+    padding-bottom: 0.5rem;
+    border-bottom: thin solid @black;
+
+    .card-id, .board-name {
+      margin-left: 0.5rem;
+    }
+  }
+
+  .dialog-content {
+    z-index: 1;
+    position: relative;
+    max-width: 40rem;
+    margin: auto;
+  }
+
+  .assignee {
+    padding: 0.25rem;
+    margin-right: 0.5rem;
+    border: thin solid @green;
+    border-radius: 0.25rem;
+    cursor: pointer;
+  }
+
+  .lane-name {
+    padding: 0.25rem;
+    border: thin solid @purple;
+    border-radius: 0.25rem;
+    cursor: pointer;
+  }
+
+  .dialog-buttons {
+    text-align: right;
+    margin: 0;
+
+    button {
+      padding: 0.5rem;
+      border-radius: 0.25rem;
+      border: thin solid lighten(@black, 80%);
+      background: lighten(@black, 90%);
+      cursor: pointer;
+
+      &:hover {
+        border: thin solid lighten(@black, 75%);
+        background: lighten(@black, 89%);
+      }
+    }
+  }
+}
+
+.about {
+  margin: 1rem 0.5rem;
+  line-height: 1.5rem;
+  max-width: 40rem;
+
+  h2 {
+    color: @black;
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  a {
+    color: @black;
+    text-decoration: none;
+    border-bottom: thin solid @blue;
+
+    &:hover {
+      color: lighten(@black, 25%);
+    }
+  }
+
+  p {
+    margin-top: 0;
+  }
+
+  ul {
+    list-style: circle;
+    margin-top: 0;
+    padding-left: 2rem;
+  }
+}
+
+.help {
+  padding: 0.5rem;
+
+  .help-title {
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 0.5rem 0rem;
+  }
+
+  .instructions {
+    margin: 0;
+    padding: 0rem;
+
+    li {
+      text-indent: 0.5rem;
+      list-style: none;
+
+      &:before {
+        content: "\2192";
+        position: relative;
+        left: -0.5rem
+      }
+    }
+  }
+}
+
+form {
+  .form-row {
+    display: table;
+    width: 100%;
+    border-spacing: 0rem;
+    table-layout: fixed;
+    box-sizing: border-box;
+    margin: 0rem 0rem 0.5rem 0rem;
+    line-height: 2rem;
+
+    label {
+      display: table-cell;
+      vertical-align: top;
+      width: 5rem;
+      padding-right: 0.5rem;
+    }
+
+    .input, input, textarea {
+      display: table-cell;
+      box-sizing: border-box;
+      width: 100%;
+      vertical-align: top;
+    }
+
+    input, textarea {
+      border: thin solid lighten(@black, 80%);
+      border-radius: 0.25rem;
+      outline: none;
+      font: inherit;
+      padding: 0rem 0.5rem;
+
+      &:focus {
+        border-color: lighten(@black, 50%);
+      }
+    }
+
+    textarea {
+      height: 15rem;
+    }
+  }
+}
+
+.sortable-list {
+  list-style: none;
+  padding: 0rem;
+  margin: 0rem;
+  width: 100%;
+
+  .sortable {
+    margin-right: 0.5rem;
+    display: inline-block;
+    box-sizing: border-box;
+    box-shadow: inset 0px 0px 0px 1px transparent;
+    border-radius: 0.25rem;
+    padding: 0rem;
+    cursor: pointer;
+
+    &:last-child {
+      margin-right: 0rem;
+    }
+
+    &.dragging {
+      background: lighten(@black, 85%);
+
+      * {
+        opacity: 0;
+      }
+    }
+  }
+
+  &.sortable-list-vertical {
+    .sortable {
+      display: block;
+      margin-bottom: 0.5rem;
+
+      &:last-child {
+        margin-right: 0rem;
+      }
+    }
+  }
+}
