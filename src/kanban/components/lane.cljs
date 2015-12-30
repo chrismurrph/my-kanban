@@ -2,7 +2,8 @@
   (:require [goog.object :as gobj]
             [om.next :as om :refer-macros [defui]]
             [om.dom :as dom]
-            [kanban.components.card :refer [Card card]]))
+            [kanban.components.card :refer [Card card]]
+            [kanban.utils :as u]))
 
 (defui Lane
   static om/Ident
@@ -13,7 +14,9 @@
     [:id :name {:cards (om/get-query Card)}])
   Object
   (render [this]
-    (let [{:keys [name cards]} (om/props this)
+    (let [{:keys [name cards] :as props} (om/props this)
+          ;_ (u/log "PROPS: " props)
+          _ (u/log "Cards for " name ": " cards)
           {:keys [card-create-fn card-drag-fns card-edit-fn]}
             (om/get-computed this)]
       (dom/div #js {:className "lane"

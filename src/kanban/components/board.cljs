@@ -29,10 +29,10 @@
                         :onDrop (:delete card-drag-fns)}
             "Delete"))
         (dom/div #js {:className "lanes"}
-          (for [l lanes]
-            (lane (om/computed l {:card-create-fn card-create-fn
-                                  :card-drag-fns card-drag-fns
-                                  :card-edit-fn card-edit-fn}))))
+          (for [la lanes]
+            (lane (om/computed la {:card-create-fn card-create-fn
+                                   :card-drag-fns card-drag-fns
+                                   :card-edit-fn card-edit-fn}))))
         (dom/div #js {:className "help"}
           (dom/h3 #js {:className "help-title"} "Help")
           (dom/ul #js {:className "instructions"}

@@ -4,7 +4,8 @@
             [goog.string.format]
             [om.next :as om :refer-macros [defui]]
             [om.dom :as dom]
-            [kanban.util :refer [class-names]]))
+            [kanban.util :refer [class-names]]
+            [kanban.utils :as u]))
 
 (defui Assignee
   static om/Ident
@@ -38,6 +39,7 @@
   Object
   (render [this]
     (let [{:keys [id text assignees]} (om/props this)
+          _ (u/log "Props given to card: " id ", " text ", " assignees)
           {:keys [drag-fns activate-fn]} (om/get-computed this)]
       (let [ref (om/get-ident this)]
         (dom/div #js {:className "card"
