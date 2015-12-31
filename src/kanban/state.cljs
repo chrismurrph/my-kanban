@@ -10,7 +10,17 @@
           "they move these cards to doing and assign them to "
           "themselves. Once completed, they move the card to "
           "Test for testers to verify the results of the work.")
-     :lanes [{:id 10} {:id 11} {:id 12} {:id 13}]}]
+     :lanes [{:id 10} {:id 11} {:id 12} {:id 13}]}
+    {:id 2
+     :name "Testing"
+     :description
+     (str "Kanban board for testers. Testers pick up the work that "
+          "developers have completed and moved to Test. They then "
+          "move these cards to Testing and assign them to themselves. "
+          "If testing is successful, cards are moved to Done, otherwise "
+          "they are moved to Issues, where they are again picked up by "
+          "developers for another round.")
+     :lanes [{:id 13} {:id 14} {:id 15} {:id 10}]}]
    :lanes
    [{:id 10 :name "Issues" :cards [{:id 102}]}
     {:id 11 :name "Backlog" :cards [{:id 100} {:id 101}]}
@@ -33,3 +43,4 @@
    :users
    [{:id 1000 :username "konrad" :name "Konrad Zuse"}
     {:id 1001 :username "ada" :name "Ada Lovelace"}]})
+

@@ -92,29 +92,36 @@
                         (dom/header #js {:className "header"}
                                     (dom/h1 nil
                                             (dom/a #js {:onClick #(.board-activate this nil)}
-                                                   "Simple Developer Kanban")))
+                                                   "Om Next Kanban Demo"))
+                                    (dom/nav nil
+                                             (let [props (-> this om/props (select-keys [:boards]))]
+                                               (boards-menu
+                                                 (om/computed props
+                                                              {:activate-fn #(.board-activate this %)
+                                                               :create-fn #(.board-create this)})))))
                         (dom/main nil
-                                  (let [active-board-props (get-in (om/props this) [:boards 0])]
+                                  (let [active-board (get-in (om/props this) [:boards 0])]
                                     (board
-                                      (computed active-board-props
-                                                   {:dragging (-> this om/props :cards/dragged)
-                                                    :edit-fn #(.board-edit this %)
-                                                    :card-create-fn #(.card-create this %)
-                                                    :card-edit-fn #(.card-edit this %)
-                                                    :card-drag-fns {:start #(.card-drag-start this %1 %2)
-                                                                    :end #(.card-drag-end this %1 %2)
-                                                                    :drop #(.card-drag-drop this %)
-                                                                    :delete #(.card-drag-delete this)}})))
-                                  (if-let [board-props (-> this om/props :boards/editing)]
+                                      (computed active-board
+                                                {:dragging (-> this om/props :cards/dragged)
+                                                 :edit-fn #(.board-edit this %)
+                                                 :card-create-fn #(.card-create this %)
+                                                 :card-edit-fn #(.card-edit this %)
+                                                 :card-drag-fns {:start #(.card-drag-start this %1 %2)
+                                                                 :end #(.card-drag-end this %1 %2)
+                                                                 :drop #(.card-drag-drop this %)
+                                                                 :delete #(.card-drag-delete this)}})))
+                                  (if-let [board (-> this om/props :boards/editing)]
                                     (board-dialog
-                                      (om/computed board-props {:lanes (-> this om/props :lanes)
-                                                                :close-fn #(.board-edit this nil)
-                                                                :update-fn #(.board-update this %1 %2)})))
-                                  (if-let [card-props (-> this om/props :cards/editing)]
+                                      (om/computed board {:lanes (-> this om/props :lanes)
+                                                          :close-fn #(.board-edit this nil)
+                                                          :update-fn #(.board-update this %1 %2)})))
+                                  (if-let [card (-> this om/props :cards/editing)]
                                     (card-dialog
-                                      (om/computed card-props {:users (-> this om/props :users)
-                                                               :close-fn #(.card-edit this nil)
-                                                               :update-fn #(.card-update this %1 %2)})))))))
+                                      (om/computed card {:users (-> this om/props :users)
+                                                         :close-fn #(.card-edit this nil)
+                                                         :update-fn #(.card-update this %1 %2)})))))))
+
 
 (defn run []
   (om/add-root! reconciler
