@@ -113,8 +113,7 @@
                                                                  :delete #(.card-drag-delete this)}})))
                                   (if-let [board (-> this om/props :boards/editing)]
                                     (board-dialog
-                                      (om/computed board {:lanes (-> this om/props :lanes)
-                                                          :close-fn #(.board-edit this nil)
+                                      (om/computed board {:close-fn #(.board-edit this nil)
                                                           :update-fn #(.board-update this %1 %2)})))
                                   (if-let [card (-> this om/props :cards/editing)]
                                     (card-dialog
