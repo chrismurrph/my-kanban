@@ -31,7 +31,7 @@
               :builds [{:id "devcards"
                         :source-paths ["src"]
                         :figwheel { :devcards true } ;; <- note this
-                        :compiler { :main       "cards.cards"
+                        :compiler { :main       "cards.ui"
                                     :asset-path "js/compiled/devcards_out"
                                     :output-to  "resources/public/js/compiled/my_kanban_devcards.js"
                                     :output-dir "resources/public/js/compiled/devcards_out"

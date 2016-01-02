@@ -15,11 +15,18 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Leiningen: cljs-react-reload:0.1.1" level="project" />
-    <orderEntry type="library" name="Leiningen: cljsjs/react-dom:0.14.0-1" level="project" />
-    <orderEntry type="library" name="Leiningen: cljsjs/react:0.14.0-1" level="project" />
+    <orderEntry type="library" name="Leiningen: cljsjs/react-dom:0.14.3-1" level="project" />
+    <orderEntry type="library" name="Leiningen: cljsjs/react:0.14.3-0" level="project" />
     <orderEntry type="library" name="Leiningen: cljsjs/showdown:0.4.0-1" level="project" />
     <orderEntry type="library" name="Leiningen: clojure-complete:0.2.3" level="project" />
+    <orderEntry type="library" name="Leiningen: com.cognitect/transit-clj:0.8.285" level="project" />
+    <orderEntry type="library" name="Leiningen: com.cognitect/transit-cljs:0.8.232" level="project" />
+    <orderEntry type="library" name="Leiningen: com.cognitect/transit-java:0.8.311" level="project" />
+    <orderEntry type="library" name="Leiningen: com.cognitect/transit-js:0.8.755" level="project" />
+    <orderEntry type="library" name="Leiningen: com.fasterxml.jackson.core/jackson-core:2.3.2" level="project" />
     <orderEntry type="library" name="Leiningen: com.google.javascript/closure-compiler:v20151015" level="project" />
+    <orderEntry type="library" name="Leiningen: com.googlecode.json-simple/json-simple:1.1.1" level="project" />
+    <orderEntry type="library" name="Leiningen: commons-codec:1.10" level="project" />
     <orderEntry type="library" name="Leiningen: devcards:0.2.1" level="project" />
     <orderEntry type="library" name="Leiningen: org.clojure/clojure:1.7.0" level="project" />
     <orderEntry type="library" name="Leiningen: org.clojure/clojurescript:1.7.170" level="project" />
@@ -34,8 +41,12 @@
     <orderEntry type="library" name="Leiningen: org.clojure/tools.analyzer:0.6.6" level="project" />
     <orderEntry type="library" name="Leiningen: org.clojure/tools.nrepl:0.2.10" level="project" />
     <orderEntry type="library" name="Leiningen: org.clojure/tools.reader:0.10.0-alpha3" level="project" />
+    <orderEntry type="library" name="Leiningen: org.javassist/javassist:3.18.1-GA" level="project" />
     <orderEntry type="library" name="Leiningen: org.mozilla/rhino:1.7R5" level="project" />
+    <orderEntry type="library" name="Leiningen: org.msgpack/msgpack:0.6.10" level="project" />
+    <orderEntry type="library" name="Leiningen: org.omcljs/om:1.0.0-alpha24" level="project" />
     <orderEntry type="library" name="Leiningen: org.ow2.asm/asm-all:4.2" level="project" />
+    <orderEntry type="library" name="Leiningen: reagent:0.5.1" level="project" />
     <orderEntry type="library" name="Leiningen: sablono:0.4.0" level="project" />
   </component>
 </module>

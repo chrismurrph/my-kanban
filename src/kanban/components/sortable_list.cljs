@@ -9,6 +9,9 @@
       (:value props)
       props)))
 
+;;
+;; If the component has been converted then use its React :key-fn
+;;
 (defn sortable-key [x]
   (let [props (cond-> x (om/component? x) om/props)]
     (some-> props om/get-computed :key-fn

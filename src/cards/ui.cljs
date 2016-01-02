@@ -6,3 +6,5 @@
 
 (defn start []
   (dc/start-devcard-ui!))
+
+(start)
