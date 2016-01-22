@@ -7,7 +7,7 @@
   :dependencies [
                  [org.clojure/clojure "1.7.0"]
                  [org.clojure/clojurescript "1.7.170"]
-                 [org.omcljs/om "1.0.0-alpha24"]
+                 [org.omcljs/om "1.0.0-alpha28"]
                  [cljsjs/react "0.14.3-0"]
                  [cljsjs/react-dom "0.14.3-1"]
                  [devcards "0.2.1"]
